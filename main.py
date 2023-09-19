@@ -16,7 +16,7 @@ def checkExtension(extensionId, repo):
     try:
         urllib.request.urlretrieve('https://clients2.google.com/service/update2/crx?response=redirect&os=win&arch=x86-64&os_arch=x86-64&nacl_arch=x86-64&prod=chromiumcrx&prodchannel=unknown&prodversion=117.0.0.0&acceptformat=crx2,crx3&x=id%3D'+urlEncode(extensionId)+'%26uc', auditStore)
     except:
-        print('Unable to download extension from the webstore')
+        print('Error getting from webstore', extensionId)
         return False
     
     with zipfile.ZipFile(auditStore, mode='r') as extension:
