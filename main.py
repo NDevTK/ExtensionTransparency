@@ -13,12 +13,17 @@ def checkExtension(extensionId, repo):
         print('Invalid repo name')
         return False
 
-    urllib.request.urlretrieve('https://clients2.google.com/service/update2/crx?response=redirect&os=win&arch=x86-64&os_arch=x86-64&nacl_arch=x86-64&prod=chromiumcrx&prodchannel=unknown&prodversion=117.0.0.0&acceptformat=crx2,crx3&x=id%3D'+urlEncode(extensionId)+'%26uc', auditStore)
+    try:
+        urllib.request.urlretrieve('https://clients2.google.com/service/update2/crx?response=redirect&os=win&arch=x86-64&os_arch=x86-64&nacl_arch=x86-64&prod=chromiumcrx&prodchannel=unknown&prodversion=117.0.0.0&acceptformat=crx2,crx3&x=id%3D'+urlEncode(extensionId)+'%26uc', auditStore)
+    except:
+        print('Unable to download extension from the webstore')
+        return False
+    
     with zipfile.ZipFile(auditStore, mode='r') as extension:
         mv = json.loads(extension.read('manifest.json'))
         trusted = getTrusted(repo, mv['version'])
         
-        if(trusted == False):
+        if (trusted == False):
             print('Error getting repo', repo, 'version', mv['version'])
             return False
         
