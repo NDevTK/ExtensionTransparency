@@ -1,8 +1,6 @@
 # ExtensionTransparency
 Check the code in the webstore match's the code on Github
 
-# Threat model
-
 ## return true
 - Github or CWS responding differently | Microsoft, Google are trusted
 - Different file paths | Easier compatibility with per-browser code
