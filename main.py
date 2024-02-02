@@ -14,7 +14,7 @@ def checkExtension(extensionId, repo):
         return False
 
     try:
-        urllib.request.urlretrieve('https://clients2.google.com/service/update2/crx?response=redirect&os=win&arch=x86-64&os_arch=x86-64&nacl_arch=x86-64&prod=chromiumcrx&prodchannel=unknown&prodversion=117.0.0.0&acceptformat=crx2,crx3&x=id%3D'+urlEncode(extensionId)+'%26uc', auditStore)
+        urllib.request.urlretrieve('https://clients2.google.com/service/update2/crx?response=redirect&os=win&arch=x86-64&os_arch=x86-64&nacl_arch=x86-64&prod=chromiumcrx&prodchannel=unknown&prodversion=121.0.0.0&acceptformat=crx2,crx3&x=id%3D'+urlEncode(extensionId)+'%26uc', auditStore)
     except:
         print('Error getting from webstore', extensionId)
         return False
